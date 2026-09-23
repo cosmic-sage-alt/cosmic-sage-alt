@@ -15,4 +15,4 @@ jobs:
         uses: actions/checkout@v4
 
       - name: SVG Profile Generator
-        uses: frostyfoxie/svg-profile-generator@v1.0.0
+        uses: frostyfoxie/svg-profile-generator@v1

@@ -16,3 +16,4 @@ jobs:
 
       - name: SVG Profile Generator
         uses: frostyfoxie/svg-profile-generator@v1
+        add pat-token: ${{ secrets.PAT_TOKEN }}

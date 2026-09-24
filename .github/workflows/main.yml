@@ -23,7 +23,7 @@ jobs:
 
       - name: Generate Dynamic SVG
         env:
-          GH_USERNAME: 'YOUR_MAIN_USERNAME' # Set explicitly to your main account username
+          GH_USERNAME: 'frostyfoxie' # Set explicitly to your main account username
           GITHUB_TOKEN: ${{ secrets.MAIN_REPO_PAT }}
           INSTAGRAM_HANDLE: 'your_instagram'
         run: |

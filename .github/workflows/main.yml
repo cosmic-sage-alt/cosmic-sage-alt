@@ -9,10 +9,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Main Repository
+      - name: Checkout Main Repository (Final Branch)
         uses: actions/checkout@v4
         with:
-          repository: 'frostyfoxie/frostyfoxie' # Replace with main account/repo name
+          repository: 'frostyfoxie/frostyfoxie'
+          ref: 'Final' # Clones the 'Final' branch instead of default 'main'
           token: ${{ secrets.MAIN_REPO_PAT }}
           fetch-depth: 0
 
@@ -23,15 +24,15 @@ jobs:
 
       - name: Generate Dynamic SVG
         env:
-          GH_USERNAME: 'frostyfoxie' # Set explicitly to your main account username
+          GH_USERNAME: 'frostyfoxie'
           GITHUB_TOKEN: ${{ secrets.MAIN_REPO_PAT }}
-          INSTAGRAM_HANDLE: 'your_instagram'
+          INSTAGRAM_HANDLE: ${{ vars.INSTAGRAM_HANDLE || 'your_instagram' }}
         run: |
           python scripts/update_svg.py
 
-      - name: Commit and Push Changes to Main Repo
+      - name: Commit and Push Changes to Final Branch
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add profile.svg btn_instagram.svg btn_email.svg btn_github.svg
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update all-time profile stats [via alt runner]" && git push)
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update profile stats [via alt runner]" && git push origin Final)

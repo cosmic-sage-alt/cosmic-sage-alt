@@ -1,4 +1,4 @@
-name: Update Main Account Profile SVG
+name: Update Main Profile SVG
 
 on:
   schedule:
@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: 'frostyfoxie/frostyfoxie'
-          ref: 'Final' # Clones the 'Final' branch instead of default 'main'
+          ref: 'Final'
           token: ${{ secrets.MAIN_REPO_PAT }}
           fetch-depth: 0
 
@@ -26,7 +26,7 @@ jobs:
         env:
           GH_USERNAME: 'frostyfoxie'
           GITHUB_TOKEN: ${{ secrets.MAIN_REPO_PAT }}
-          INSTAGRAM_HANDLE: ${{ vars.INSTAGRAM_HANDLE || 'your_instagram' }}
+          INSTAGRAM_HANDLE: ${{ vars.INSTAGRAM_HANDLE || 'oneinagoogolplex._' }}
         run: |
           python scripts/update_svg.py
 
